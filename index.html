@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- PyScript CSS -->
+    <link
+      rel="stylesheet"
+      href="https://pyscript.net/releases/2024.1.1/core.css"
+    />
+    <!-- CSS for examples -->
+    <link rel="stylesheet" href="./assets/css/examples.css" />
+    <!-- This script tag bootstraps PyScript -->
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2024.1.1/core.js"
+    ></script>
+    <script type="text/javascript">
+      async function install_opencv() {
+        await pyodide.loadPackage("opencv-python");
+      }
+      install_opencv().then(() => {
+        import("./index.py");
+      });
+    </script>
+    <title>Trabajo Python</title>
+  </head>
+  <body>
+    <h1>Detectar rostros en tiempo real</h1>
+    <video py-video="width: 640, height: 480" py-loop="true" id="video"></video>
+    <canvas py-canvas="width: 640, height: 480" id="canvas"></canvas>
+  </body>
+</html>
